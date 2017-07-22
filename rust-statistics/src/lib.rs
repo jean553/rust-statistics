@@ -1,4 +1,6 @@
-mod rs {
+/// we allow dead code to prevent warnings saying the functions are not used
+#[allow(dead_code)]
+mod lib {
 
     /// Inserts one value into the given dynamic array
     ///
@@ -31,66 +33,32 @@ mod rs {
         sorted_array.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
         let index: f32 = percentile / 100.0 * (sorted_array.len() as f32);
-        return sorted_array[index.round() as usize];
+
+        if index.floor() == index {
+            return (
+                sorted_array[(index - 1.0) as usize] +
+                sorted_array[index as usize]
+            ) / 2.0;
+        }
+
+        sorted_array[index.ceil() as usize]
+    }
+
+    /// Returns the average of values into the dynamic array
+    ///
+    /// Args:
+    ///
+    /// * `array`: reference to the array
+    pub fn get_average(array: &Vec<f32>) -> f32 {
+
+        let mut sum = 0.0;
+        for value in array {
+            sum += *value;
+        }
+
+        return sum / (array.len() as f32);
     }
 }
 
 #[cfg(test)]
-mod tests {
-
-    use rs;
-
-    #[test]
-    fn test_add_values() {
-
-        let mut array = Vec::new();
-
-        rs::add(&mut array, 3.4);
-
-        assert_eq!(
-            array,
-            [3.4],
-            "incorrect one item array"
-        );
-
-        rs::add(&mut array, 5.7);
-
-        assert_eq!(
-            array,
-            [3.4, 5.7],
-            "incorrect two items array"
-        );
-    }
-
-    #[test]
-    fn test_get_percentile() {
-
-        let mut first_array = Vec::new();
-        let first_values: [f32; 9] = [
-            9.0,
-            3.0,
-            3.0,
-            4.0,
-            5.0,
-            4.9,
-            8.0,
-            3.3,
-            2.0
-        ];
-
-        for value in first_values.iter() {
-            rs::add(
-                &mut first_array,
-                *value
-            );
-        }
-
-        assert_eq!(
-            rs::get_percentile(
-                &first_array,
-                70.0,
-            ),
-            5.0
-        );
-    }
-}
+mod tests;
