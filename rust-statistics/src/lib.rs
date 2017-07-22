@@ -4,6 +4,8 @@ mod lib {
 
     /// Returns the nth percentile of the given array
     ///
+    /// TODO: #7 handle float comparisons
+    ///
     /// Args:
     ///
     /// * `array`: mutable reference to the array to modify
@@ -35,11 +37,7 @@ mod lib {
     /// * `array`: reference to the array
     pub fn get_average(array: &Vec<f32>) -> f32 {
 
-        let mut sum = 0.0;
-        for value in array {
-            sum += *value;
-        }
-
+        let sum: f32 = array.iter().sum();
         return sum / (array.len() as f32);
     }
 }
