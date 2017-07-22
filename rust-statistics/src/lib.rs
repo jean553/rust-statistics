@@ -36,11 +36,11 @@ mod lib {
     ///
     /// Args:
     ///
-    /// * `array`: reference to the array
-    pub fn get_average(array: &[f32]) -> f32 {
+    /// * `array`: slice of values
+    pub fn get_average(slice: &[f32]) -> f32 {
 
-        let sum: f32 = array.iter().sum();
-        return sum / (array.len() as f32);
+        let sum: f32 = slice.iter().sum();
+        return sum / (slice.len() as f32);
     }
 }
 
