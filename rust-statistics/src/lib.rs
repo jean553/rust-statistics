@@ -21,10 +21,12 @@ mod lib {
         let index: f32 = percentile / 100.0 * (sorted_array.len() as f32);
 
         if index.floor() == index {
-            return (
-                sorted_array[(index - 1.0) as usize] +
-                sorted_array[index as usize]
-            ) / 2.0;
+
+            let index = index as usize;
+            let start = index - 1;
+            let end = index + 1;
+
+            return get_average(&sorted_array[start..end]);
         }
 
         sorted_array[index.ceil() as usize]
@@ -35,7 +37,7 @@ mod lib {
     /// Args:
     ///
     /// * `array`: reference to the array
-    pub fn get_average(array: &Vec<f32>) -> f32 {
+    pub fn get_average(array: &[f32]) -> f32 {
 
         let sum: f32 = array.iter().sum();
         return sum / (array.len() as f32);
