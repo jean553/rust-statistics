@@ -20,6 +20,7 @@ mod lib {
 
         let index: f32 = percentile / 100.0 * (sorted_array.len() as f32);
 
+        /* FIXME: two floats comparison here */
         if index.floor() == index {
 
             let index = index as usize;
