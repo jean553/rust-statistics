@@ -2,22 +2,6 @@
 #[allow(dead_code)]
 mod lib {
 
-    /// Inserts one value into the given dynamic array
-    ///
-    /// NOTE: this method is useless,
-    /// we could directly use `push()` of `Vec<T>`.
-    ///
-    /// Args:
-    ///
-    /// * `array`: mutable reference to the array to modify
-    /// * `value`: the value to insert into the array
-    pub fn add(
-        array: &mut Vec<f32>,
-        value: f32,
-    ) {
-        array.push(value);
-    }
-
     /// Returns the nth percentile of the given array
     ///
     /// Args:
