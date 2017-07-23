@@ -31,7 +31,7 @@ mod tests {
         let array = get_array();
 
         /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_percentile(
                 &array,
                 70,
@@ -40,7 +40,7 @@ mod tests {
         );
 
         /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_percentile(
                 &array,
                 50,
@@ -49,7 +49,7 @@ mod tests {
         );
 
         /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_percentile(
                 &array,
                 1,
@@ -64,7 +64,7 @@ mod tests {
         let array = get_array();
 
         /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_average(&array),
             4.23
         );
