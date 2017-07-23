@@ -1,3 +1,5 @@
+#[macro_use] extern crate assert_approx_eq;
+
 /// we allow dead code to prevent warnings saying the functions are not used
 #[allow(dead_code)]
 mod lib {

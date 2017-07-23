@@ -1,6 +1,3 @@
-/// TODO: #4 we use `assert_eq!` to compare float,
-/// we should check if there is a better way for float comparison
-
 #[cfg(test)]
 mod tests {
 
@@ -30,8 +27,7 @@ mod tests {
 
         let array = get_array();
 
-        /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_percentile(
                 &array,
                 70,
@@ -39,8 +35,7 @@ mod tests {
             4.95
         );
 
-        /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_percentile(
                 &array,
                 50,
@@ -48,8 +43,7 @@ mod tests {
             3.65
         );
 
-        /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_percentile(
                 &array,
                 1,
@@ -63,8 +57,7 @@ mod tests {
 
         let array = get_array();
 
-        /* FIXME: two floats comparison here */
-        assert_eq!(
+        assert_approx_eq!(
             lib::get_average(&array),
             4.23
         );
