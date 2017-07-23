@@ -34,9 +34,27 @@ mod tests {
         assert_eq!(
             lib::get_percentile(
                 &array,
-                70.0,
+                70,
             ),
             4.95
+        );
+
+        /* FIXME: two floats comparison here */
+        assert_eq!(
+            lib::get_percentile(
+                &array,
+                50,
+            ),
+            3.65
+        );
+
+        /* FIXME: two floats comparison here */
+        assert_eq!(
+            lib::get_percentile(
+                &array,
+                1,
+            ),
+            0.1
         );
     }
 
