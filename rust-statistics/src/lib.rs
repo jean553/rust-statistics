@@ -12,13 +12,13 @@ mod lib {
     /// * `percentile`: the expected percentile
     pub fn get_percentile(
         array: &Vec<f32>,
-        percentile: f32,
+        percentile: u8,
     ) -> f32 {
 
         let mut sorted_array = array.clone();
         sorted_array.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
-        let index: f32 = percentile / 100.0 * (sorted_array.len() as f32);
+        let index: f32 = percentile as f32 / 100.0 * sorted_array.len() as f32;
 
         /* FIXME: two floats comparison here */
         if index.floor() == index {
@@ -30,7 +30,7 @@ mod lib {
             return get_average(&sorted_array[start..end]);
         }
 
-        sorted_array[index.ceil() as usize]
+        sorted_array[index.floor() as usize]
     }
 
     /// Returns the average of values into the dynamic array
