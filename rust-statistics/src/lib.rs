@@ -4,6 +4,8 @@
 #[allow(dead_code)]
 mod lib {
 
+    use std::f32;
+
     /// Returns the nth percentile of the given array
     ///
     /// TODO: #7 handle float comparisons
@@ -22,8 +24,7 @@ mod lib {
 
         let index: f32 = percentile as f32 / 100.0 * sorted_array.len() as f32;
 
-        /* FIXME: two floats comparison here */
-        if index.floor() == index {
+        if (index.floor() - index).abs() <= f32::EPSILON {
 
             let index = index as usize;
             let start = index - 1;
