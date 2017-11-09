@@ -1,4 +1,5 @@
-#[macro_use] extern crate assert_approx_eq;
+#[macro_use(assert_approx_eq)]
+extern crate assert_approx_eq;
 
 /// we allow dead code to prevent warnings saying the functions are not used
 #[allow(dead_code)]
