@@ -1,7 +1,7 @@
-#[macro_use] extern crate assert_approx_eq;
+#[macro_use(assert_approx_eq)]
+extern crate assert_approx_eq;
 
-/// we allow dead code to prevent warnings saying the functions are not used
-#[allow(dead_code)]
+/// library that calculates averages and percentiles
 mod lib {
 
     use std::f32;
@@ -14,6 +14,10 @@ mod lib {
     ///
     /// * `array`: mutable reference to the array to modify
     /// * `percentile`: the expected percentile
+    ///
+    /// Returns:
+    ///
+    /// calculated nth percentile
     pub fn get_percentile(
         array: &Vec<f32>,
         percentile: u8,
@@ -41,6 +45,10 @@ mod lib {
     /// Args:
     ///
     /// * `array`: slice of values
+    ///
+    /// Returns:
+    ///
+    /// calculated average
     pub fn get_average(slice: &[f32]) -> f32 {
 
         let sum: f32 = slice.iter().sum();
