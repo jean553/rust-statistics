@@ -5,7 +5,9 @@ mod tests {
 
     /// Returns the array to work with for tests purposes
     ///
-    /// TODO: #3 check if the array can be declared as a constant global
+    /// Returns:
+    ///
+    /// tests purpose array
     fn get_array() -> Vec<f32> {
 
         return vec![
