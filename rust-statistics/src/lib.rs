@@ -16,6 +16,7 @@ mod lib {
     /// Returns:
     ///
     /// calculated nth percentile
+    #[allow(dead_code)]
     pub fn get_percentile(
         array: &Vec<f32>,
         percentile: u8,
