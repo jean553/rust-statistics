@@ -8,8 +8,6 @@ mod lib {
 
     /// Returns the nth percentile of the given array
     ///
-    /// TODO: #7 handle float comparisons
-    ///
     /// Args:
     ///
     /// * `array`: mutable reference to the array to modify
