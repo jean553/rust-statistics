@@ -25,7 +25,9 @@ mod lib {
         let mut sorted_array = array.clone();
         sorted_array.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
-        let index: f32 = percentile as f32 / 100.0 * sorted_array.len() as f32;
+        const ONE_HUNDRED_PERCENT: f32 = 100.0;
+        let array_length = sorted_array.len() as f32;
+        let index = percentile as f32 / ONE_HUNDRED_PERCENT * array_length;
 
         if (index.floor() - index).abs() <= f32::EPSILON {
 
