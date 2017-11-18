@@ -8,8 +8,6 @@ mod lib {
 
     /// Returns the nth percentile of the given array
     ///
-    /// TODO: #7 handle float comparisons
-    ///
     /// Args:
     ///
     /// * `array`: mutable reference to the array to modify
@@ -18,6 +16,7 @@ mod lib {
     /// Returns:
     ///
     /// calculated nth percentile
+    #[allow(dead_code)]
     pub fn get_percentile(
         array: &Vec<f32>,
         percentile: u8,
@@ -26,7 +25,9 @@ mod lib {
         let mut sorted_array = array.clone();
         sorted_array.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
-        let index: f32 = percentile as f32 / 100.0 * sorted_array.len() as f32;
+        const ONE_HUNDRED_PERCENT: f32 = 100.0;
+        let array_length = sorted_array.len() as f32;
+        let index = percentile as f32 / ONE_HUNDRED_PERCENT * array_length;
 
         if (index.floor() - index).abs() <= f32::EPSILON {
 
